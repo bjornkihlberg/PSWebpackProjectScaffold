@@ -7,13 +7,23 @@ module.exports = {
         rules: [
             {
                 test: /.html$/,
-                exclude: [/node_modules/],
+                exclude: [/node_modules/, /.psc-package/, /output/],
                 loader: 'file-loader?name=[name].[ext]'
+            },
+            {
+                test: /.purs$/,
+                loader: 'purs-loader',
+                exclude: [/node_modules/, /.psc-package/, /output/],
+                query: {
+                    bundle: true,
+                    pscPackage: true,
+                    watch: true
+                }
             }
         ]
     },
     resolve: {
-        extensions: ['.js']
+        extensions: ['.purs', '.js']
     },
     output: {
         filename: 'bundle.js',
