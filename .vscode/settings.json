@@ -1,4 +1,5 @@
 {
+    "purescript.addNpmPath": true,
     "files.exclude": {
         "**/LICENSE": true,
         "**/.psc*": true,
