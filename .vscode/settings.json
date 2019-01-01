@@ -1,0 +1,11 @@
+{
+    "files.exclude": {
+        "**/.psc*": true,
+        "**/.purs*": true,
+        "**/.pulp*": true,
+        "**/.psci*": true,
+        "**/dist": true,
+        "**/node_modules": true,
+        "**/output": true
+    }
+}
