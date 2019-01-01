@@ -4,7 +4,13 @@ module.exports = {
     entry: './src/index.js',
     mode: 'development',
     module: {
-        rules: []
+        rules: [
+            {
+                test: /.html$/,
+                exclude: [/node_modules/],
+                loader: 'file-loader?name=[name].[ext]'
+            }
+        ]
     },
     resolve: {
         extensions: ['.js']
