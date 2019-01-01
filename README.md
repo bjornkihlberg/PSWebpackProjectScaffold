@@ -29,3 +29,7 @@ is demonstrated as well.
     ```
     npm run server
     ```
+1. Start PureScript [read-eval-print-loop](https://en.wikipedia.org/wiki/Read–eval–print_loop) (REPL) with command:
+    ```
+    npm run repl
+    ```
