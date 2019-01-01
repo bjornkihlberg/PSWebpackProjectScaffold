@@ -17,15 +17,19 @@ type State = { i :: Int }
 
 type Input = Unit
 
-data Query a = Increment a | Decrement a
+data Action = Increment | Decrement
 
-data Message = Incremented | Decremented
+data Query action a = Query action a
 
-myComponent :: forall m. H.Component HH.HTML Query Input Message m
+type QueryAction = Query Action
+
+data Message = Message
+
+myComponent :: forall m. H.Component HH.HTML QueryAction Input Message m
 myComponent =
     H.component
         { initialState
-        , render: view
+        , render
         , eval
         , receiver: const Nothing
         }
@@ -34,30 +38,29 @@ myComponent =
     initialState :: forall a. a -> State
     initialState = const { i: 0 }
 
-    view :: State -> H.ComponentHTML Query
-    view { i } =
+    render :: State -> H.ComponentHTML QueryAction
+    render { i } =
         HH.div []
         [ HH.h1 [] [ HH.text $ show i ]
         , HH.button
-            [ HP.title "Click me!"
-            , HE.onClick (HE.input_ Increment)
+            [ HP.title "Let's increment!"
+            , HE.onClick (HE.input_ (Query Increment))
             ]
             [ HH.text "Increment" ]
         , HH.button
-            [ HP.title "Click me!"
-            , HE.onClick (HE.input_ Decrement)
+            [ HP.title "Let's decrement!"
+            , HE.onClick (HE.input_ (Query Decrement))
             ]
             [ HH.text "Decrement" ]
         ]
 
-    eval :: Query ~> H.ComponentDSL State Query Message m
-    eval (Increment next) = do
-        H.modify_ \state -> state { i = state.i + myForeignFunction 1 }
-        H.raise Incremented
-        pure next
-    eval (Decrement next) = do
-        H.modify_ \state -> state { i = state.i - myForeignFunction 1 }
-        H.raise Decremented
+    update :: Action -> State -> State
+    update Increment state = state { i = state.i + myForeignFunction 1 }
+    update Decrement state = state { i = state.i - myForeignFunction 1 }
+
+    eval :: QueryAction ~> H.ComponentDSL State QueryAction Message m
+    eval (Query action next) = do
+        H.modify_ $ update action
         pure next
 
 main :: Effect Unit
