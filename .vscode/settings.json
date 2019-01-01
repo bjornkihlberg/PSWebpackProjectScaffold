@@ -1,5 +1,6 @@
 {
     "files.exclude": {
+        "**/LICENSE": true,
         "**/.psc*": true,
         "**/.purs*": true,
         "**/.pulp*": true,
