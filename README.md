@@ -5,9 +5,10 @@ is used to automatically bundle
 [PureScript](http://www.purescript.org/)
 together with *index.html* into a *dist*-folder.
 
-A small demonstration of
+Canonical counter example is built with
+[Halogen](https://github.com/slamdata/purescript-halogen). A small demonstration of
 [PureScript FFI](https://github.com/purescript/documentation/blob/master/guides/FFI.md)
-is demonstrated as well.
+is included as well.
 
 ## Instructions
 1. After cloning, install with command:
