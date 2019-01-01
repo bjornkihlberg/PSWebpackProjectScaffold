@@ -23,6 +23,7 @@
     },
     "homepage": "https://github.com/bjornkihlberg/PSWebpackProjectScaffold#readme",
     "devDependencies": {
+        "file-loader": "^3.0.1",
         "psc-package": "^3.0.1",
         "pulp": "^12.3.1",
         "purescript": "^0.12.1",
