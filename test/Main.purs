@@ -13,4 +13,4 @@ main :: Effect Unit
 main = runTest do
     test "My tests" do
         assert "f should double" $ myForeignFunction 5.0 == 10.0
-        quickCheck \x -> f x /= x -- quickCheck may not be a proper quick check
+        quickCheck \x -> myForeignFunction x /= x -- quickCheck may not be a proper quick check
