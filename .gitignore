@@ -1,0 +1,8 @@
+/.psc*
+/.purs*
+/.psa*
+/.pulp*
+
+node_modules
+dist
+output
