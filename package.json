@@ -7,7 +7,8 @@
         "test": "pulp --watch test",
         "build": "webpack --watch --progress",
         "repl": "pulp repl",
-        "server": "lite-server -c server.json"
+        "server": "lite-server -c server.json",
+        "postinstall": "psc-package install"
     },
     "repository": {
         "type": "git",
